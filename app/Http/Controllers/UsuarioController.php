@@ -6,12 +6,17 @@ use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
 {
+
+    public function usuariosView()
+    {
+        return view('usuarios');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
+
     }
 
     /**

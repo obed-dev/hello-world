@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 
 class LibroController extends Controller
 {
+
+
+
+    public function librosView()
+    {
+        return view('libros');
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
+
 
     /**
      * Show the form for creating a new resource.
