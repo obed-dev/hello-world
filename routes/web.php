@@ -20,13 +20,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\UsuarioController;
-Route::get ('/', function(){
- return view('libros');
+use App\Models\Usuario;
+
+Route::get ('/usuarios', function(){
+    $usuarios = Usuario::all();
+    return view('usuarios', ['usuarios' => $usuarios]);
 });
 
 
-Route::get('/usuarios', [ UsuarioController::class ,'usuariosView' ] );
+
 Route::get('/libros' , [ LibroController::class , 'librosView'   ] );
+
 
 /*Route::resource('libros', [LibroController::class , 'usuariosView']   );
 Route::resource('/prestamos', PrestamoController::class); */

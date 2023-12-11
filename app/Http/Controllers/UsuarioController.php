@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
 
     public function usuariosView()
     {
+        $usuarios=DB::select('select * from usuarios');
         return view('usuarios');
     }
     /**
