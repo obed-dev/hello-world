@@ -22,6 +22,8 @@
      <div class="p-5 table-responsive">
         <table class="table caption-top ">
         <h2>Listado de Usuarios</h2>
+        <a href="{{route ('usuarios-create')}}">Agregar un nuevo usuario</a>
+
         <thead>
           <tr>
             <th scope="col">Codigo</th>
@@ -35,7 +37,7 @@
 
         @foreach($usuarios as $usuario)
             <tr>
-              <a href="{{route ('usuarios-show' , $usuario)}}"> {{ $usuario->id }} </a>
+                <td>  <a href="{{route ('usuarios-show' , $usuario)}}"> {{ $usuario->id }} </a></td>
 
                 <td>{{ $usuario->nombre }}</td>
                 <td>{{ $usuario->email }}</td>

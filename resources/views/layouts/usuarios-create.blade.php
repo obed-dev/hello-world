@@ -1,12 +1,12 @@
 
 
 
-    @extends('usuarios-create')
+    @extends('usuarios')
 
     @section('content')
         <div class="container">
             <h2>Crear Usuario</h2>
-            {{-- <form action="{{ route('usuarios.store') }}" method="post"> --}}
+            {{-- <form action="{{ route('usuarios-store') }}" method="post"> --}}
                 @csrf
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
@@ -20,5 +20,6 @@
             </form>
         </div>
     @endsection
+
 
 

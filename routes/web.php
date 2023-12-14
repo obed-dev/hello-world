@@ -26,8 +26,9 @@ use App\Models\Usuario;
 
 
 Route::get('/usuarios' , [ UsuarioController::class ,'index']) -> name ('usuarios');
-Route::get('/usuarios/create' , [ UsuarioController::class ,'create']) -> name ('usuarios-create');
-Route::get ('usuarios/{create}', [usuarioController::class , 'show']) ->where(['usuarios' => '[A+Za-z]+'])->name('usuarios-show');
+Route::get('/create' , [ UsuarioController::class ,'create']) -> name ('usuarios-create');
+Route::post ('/usuarios', [UsuarioController::class , 'store'] ) -> name('agenda-store');
+Route::get ('layouts/{create}', [usuarioController::class , 'show']) ->where(['usuarios' => '[A+Za-z]+'])->name('usuarios-show');
 
 Route::get('/libros' , [ LibroController::class , 'index' ] ) ->name('libros');
 
