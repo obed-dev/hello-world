@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prestamo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PrestamoController extends Controller
 {
-    /**
+
+
+       /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $prestamos = Prestamo::all();
+        return view('prestamos', ['prestamos' => $prestamos]);
     }
 
     /**

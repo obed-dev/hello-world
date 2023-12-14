@@ -2,70 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
 
-    public function usuariosView()
-    {
-        $usuarios=DB::select('select * from usuarios');
-        return view('usuarios');
-    }
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-
+        $usuarios = Usuario::all();
+        return view('usuarios', ['usuarios' => $usuarios]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+
+        return view('usuarios-create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id' => new Usuario(),
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email|unique:usuarios,email',
+        ]);
+
+        Usuario::create($request->all());
+        return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Usuario $usuario)
     {
-        //
+        return view('usuarios.show', ['usuario' => $usuario]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Usuario $usuario)
     {
-        //
+        return view('usuarios.edit', ['usuario' => $usuario]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Usuario $usuario)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email|unique:usuarios,email,'.$usuario->id,
+        ]);
+
+        $usuario->update($request->all());
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado exitosamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente');
     }
 }

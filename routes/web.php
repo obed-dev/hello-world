@@ -20,16 +20,18 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\UsuarioController;
+use App\Models\Prestamo;
 use App\Models\Usuario;
 
-Route::get ('/usuarios', function(){
-    $usuarios = Usuario::all();
-    return view('usuarios', ['usuarios' => $usuarios]);
-});
 
 
+Route::get('/usuarios' , [ UsuarioController::class ,'index']) -> name ('usuarios');
+Route::get('/usuarios/create' , [ UsuarioController::class ,'create']) -> name ('usuarios-create');
+Route::get ('usuarios/{create}', [usuarioController::class , 'show']) ->where(['usuarios' => '[A+Za-z]+'])->name('usuarios-show');
 
-Route::get('/libros' , [ LibroController::class , 'librosView'   ] );
+Route::get('/libros' , [ LibroController::class , 'index' ] ) ->name('libros');
+
+Route::get('/prestamos' , [ PrestamoController::class , 'index' ]) ->name('prestamos');
 
 
 /*Route::resource('libros', [LibroController::class , 'usuariosView']   );
@@ -38,7 +40,7 @@ Route::resource('/prestamos', PrestamoController::class); */
 
 
 // Route::get('/' , homeController::class);
-// Route::get ('agenda', [agendaController::class , 'index']) ->name('agenda.index');
+// Route::get ('usuarios', [UsuarioController::class , 'index']) ->name('usuarios.index');
 // Route::get ('agenda/create', [agendaController::class , 'create']) ->name('agenda.create');
 // Route::post ('agenda', [agendaController::class , 'store'] ) -> name('agenda.store');
-// Route::get ('agenda/{agenda}', [agendaController::class , 'show']) ->where(['agenda' => '[A+Za-z]+'])->name('agenda.show');
+

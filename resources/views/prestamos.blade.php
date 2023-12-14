@@ -17,26 +17,29 @@
 
 
 </style>
-    <h1> Listado de Libros en Biblioteca </h1>
+    <h1> Biblioteca Virtual </h1>
 
      <div class="p-5 table-responsive">
         <table class="table caption-top ">
-        <a href="usuarios"> <h2 >Listado de Usuarios</h2></a>
+        <h2>Listado de Libros Prestados</h2>
         <thead >
           <tr>
             <th scope="col">Codigo</th>
-            <th scope="col">Nombre</th>
-
+            <th scope="col">ID Usuario</th>
+            <th scope="col">Libro</th>
+            <th scope="col">Devuelto</th>
 
           </tr>
         </thead>
 
         <tbody class="table-group-divider" >
 
-        @foreach($libros as $libro)
+        @foreach($prestamos as $prestamo)
             <tr>
-                <th> {{ $libro->id }}</th>
-                <td>{{ $libro->nombre }}</td>
+                <th> {{ $prestamo->id }}</th>
+                <td>{{ $prestamo->idUsuario }}</td>
+                <td>{{ $prestamo->idLibro }}</td>
+                <td>{{ $prestamo->devuelto}}</td>
 
               </tr>
             @endforeach

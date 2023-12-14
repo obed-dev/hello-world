@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Libro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LibroController extends Controller
 {
 
 
 
-    public function librosView()
-    {
-        return view('libros');
-    }
+
     /**
      * Display a listing of the resource.
      */
+    public function index()
+    {
 
+
+        $libros = Libro::all();
+        return view('libros', ['libros' => $libros]);
+    }
 
     /**
      * Show the form for creating a new resource.
