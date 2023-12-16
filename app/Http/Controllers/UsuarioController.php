@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prestamo;
 use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -40,8 +41,9 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios')->with('success', 'Usuario creado exitosamente');
     }
 
-    public function show(Usuario $usuario)
+    public function show(Usuario  $usuario)
     {
+
         return view('layouts/usuarios-show', ['usuario' => $usuario]);
     }
 

@@ -24,6 +24,17 @@
         <h2>Listado de Usuarios</h2>
         <a href="{{route ('usuarios-create')}}">Agregar un nuevo usuario</a>
 
+        <div>
+
+            @yield('content')
+
+         </div>
+
+
+         <div>
+            @yield('show')
+
+            </div>
         <thead>
           <tr>
             <th scope="col">Codigo</th>
@@ -44,6 +55,8 @@
 
               </tr>
             @endforeach
+
+  @yield('container')
 
 
         </tbody>

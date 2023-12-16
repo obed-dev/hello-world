@@ -1,6 +1,6 @@
 @extends('usuarios')
 
-@section('content')
+@section('container')
     <div class="container">
         <h2>Editar Usuario</h2>
         <form action="{{ route('usuarios.update', $usuario->id) }}" method="post">
